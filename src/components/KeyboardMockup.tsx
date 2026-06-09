@@ -13,7 +13,7 @@ export default function KeyboardMockup() {
             Works anywhere you can type.
           </h2>
           <p className="text-zinc-400 text-xs sm:text-[13px] max-w-xl mx-auto leading-relaxed font-sans select-none">
-            Slack, Notion, Cursor, Gmail, or your favorite code editor — thinkwsipr runs globally at the system level.
+            Slack, Notion, Cursor, Gmail, or your favorite code editor — thinkwispr runs globally at the system level.
           </p>
         </div>
 
@@ -27,7 +27,7 @@ export default function KeyboardMockup() {
         >
           <img 
             src="https://i.ibb.co/0zHVFLc/Screenshot-20260606-135525-Chrome.jpg" 
-            alt="thinkwsipr keyboard output integration layout" 
+            alt="thinkwispr keyboard output integration layout" 
             className="w-full h-auto object-contain select-none shadow-[0_25px_60px_rgba(0,0,0,0.85)] rounded-3xl border border-white/[0.05]"
             referrerPolicy="no-referrer"
           />

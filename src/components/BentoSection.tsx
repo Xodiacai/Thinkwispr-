@@ -99,7 +99,7 @@ export default function BentoSection() {
                 <h3 className="text-[17px] font-bold text-white font-sans select-none">Works offline</h3>
               </div>
               <p className="text-zinc-400 text-xs sm:text-[13px] leading-relaxed font-sans select-none">
-                Superwhisper works offline, so you can transcribe anytime. No Wi-Fi, no problem.
+                thinkwispr works offline, so you can transcribe anytime. No Wi-Fi, no problem.
               </p>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function BentoSection() {
                 <h3 className="text-[17px] font-bold text-white font-sans select-none">Use your own words</h3>
               </div>
               <p className="text-zinc-400 text-xs sm:text-[13px] leading-relaxed font-sans select-none">
-                Enter names, abbreviations, and specialized terms once. Superwhisper remembers forever.
+                Enter names, abbreviations, and specialized terms once. thinkwispr remembers forever.
               </p>
             </div>
           </div>

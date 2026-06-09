@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { useState, useRef, useEffect } from "react";
 import { 
   AudioLines, Sparkles, Command, Mic, Square, Mail, ListTodo, 
@@ -67,6 +67,24 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 );
 
 export default function App() {
+  // Hero section scroll animation hooks
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Scroll animations for hero card
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.94]);
+  const heroWidth = useTransform(scrollYProgress, [0, 0.5], ["100%", "94%"]);
+  const heroBorderRadius = useTransform(scrollYProgress, [0, 0.5], ["0px", "36px"]);
+  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 24]);
+  const heroBorderColor = useTransform(
+    scrollYProgress,
+    [0, 0.3],
+    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.15)"]
+  );
+
   // Audio state
   const [isRecording, setIsRecording] = useState(false);
   const [isFormatting, setIsFormatting] = useState(false);
@@ -280,8 +298,8 @@ export default function App() {
       >
         <div className="bg-black/30 backdrop-blur-md rounded-full border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25)] flex items-center justify-between pr-2 pl-6 py-2 gap-4 w-full">
           <div className="flex items-center gap-2 font-extrabold text-lg tracking-tight pt-0.5 shrink-0 text-white">
-             <AudioLines className="w-5 h-5 text-white stroke-[2]" />
-             <span>thinkwsipr</span>
+             <img src="https://i.ibb.co/7JDFJJyd/Screenshot-20260609-134229-Chrome.jpg" className="w-6 h-6 rounded-md object-cover" referrerPolicy="no-referrer" alt="thinkwispr logo" />
+             <span>thinkwispr</span>
           </div>
 
           {/* Minimalist Navigation Anchors */}
@@ -300,66 +318,77 @@ export default function App() {
         </div>
       </motion.div>
 
-      {/* Hero Section with Backdrop light */}
-      <section className="w-full relative flex flex-col items-center justify-center pt-52 pb-44 px-4 overflow-hidden min-h-screen bg-black border-b border-neutral-900">
-        
-        {/* FIRST PAGE IMMERSIVE FULL-BLEED BACKGROUND GRAPHIC (Line-face artwork & high-fidelity workspace layout) */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-100 transition-opacity duration-700" 
-          style={{ 
-            backgroundImage: `url('https://i.ibb.co/bjxHfdsc/1780741141830.png')`,
-            backgroundRepeat: 'no-repeat'
+      {/* Hero Section with Scroll Animation */}
+      <div ref={heroRef} className="w-full bg-black relative flex flex-col items-center overflow-visible z-10 min-h-screen">
+        <motion.div
+          style={{
+            scale: heroScale,
+            width: heroWidth,
+            borderRadius: heroBorderRadius,
+            y: heroY,
+            borderColor: heroBorderColor,
+            borderWidth: "1px",
           }}
-        />
+          className="relative w-full flex flex-col items-center justify-center pt-52 pb-44 px-4 overflow-hidden min-h-screen bg-black shadow-[0_30px_100px_rgba(0,0,0,0.95)]"
+        >
+          {/* FIRST PAGE IMMERSIVE FULL-BLEED BACKGROUND GRAPHIC (Line-face artwork & high-fidelity workspace layout) */}
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-100 transition-opacity duration-700" 
+            style={{ 
+              backgroundImage: `url('https://i.ibb.co/bjxHfdsc/1780741141830.png')`,
+              backgroundRepeat: 'no-repeat'
+            }}
+          />
 
-        <div className="relative z-10 text-center flex flex-col items-center w-full max-w-4xl mx-auto">
-          {/* Slogan */}
-          <FadeIn delay={0.25}>
-            <h1 className="text-5xl sm:text-7xl md:text-[84px] tracking-tight text-white font-extrabold leading-[1.05] mb-8 font-sans">
-              Just speak.<br />
-              <span className="text-white">Write faster.</span>
-            </h1>
-          </FadeIn>
+          <div className="relative z-10 text-center flex flex-col items-center w-full max-w-4xl mx-auto">
+            {/* Slogan */}
+            <FadeIn delay={0.25}>
+              <h1 className="text-5xl sm:text-7xl md:text-[84px] tracking-tight text-white font-extrabold leading-[1.05] mb-8 font-sans">
+                Just speak.<br />
+                <span className="text-white">Write faster.</span>
+              </h1>
+            </FadeIn>
 
-          {/* Download buttons columns */}
-          <FadeIn delay={0.35}>
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <button 
-                className="bg-white hover:bg-neutral-100 text-black font-extrabold rounded-full px-8 py-4 flex items-center justify-center gap-2.5 transition-all text-sm shadow-xl hover:scale-105 cursor-pointer pointer-events-auto"
-                onClick={() => {
-                  alert("thinkwsipr client package downloaded for macOS. Press standard triple-spacebar globally to dictate.");
-                }}
-              >
-                <AppleIcon className="w-4 h-4 mb-0.5" />
-                Download for Mac
-              </button>
-              
-              <button 
-                className="bg-black hover:bg-neutral-900 text-white font-extrabold rounded-full px-8 py-4 flex items-center justify-center gap-2.5 transition-all text-sm border border-neutral-800 hover:scale-105 cursor-pointer pointer-events-auto"
-                onClick={() => {
-                  alert("thinkwsipr download initiated for Windows Core Operating Systems.");
-                }}
-              >
-                <WindowsIcon className="w-4 h-4 mb-0.5" />
-                Download for Windows
-              </button>
-            </div>
-          </FadeIn>
+            {/* Download buttons columns */}
+            <FadeIn delay={0.35}>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <button 
+                  className="bg-white hover:bg-neutral-100 text-black font-extrabold rounded-full px-8 py-4 flex items-center justify-center gap-2.5 transition-all text-sm shadow-xl hover:scale-105 cursor-pointer pointer-events-auto"
+                  onClick={() => {
+                    alert("thinkwispr client package downloaded for macOS. Press standard triple-spacebar globally to dictate.");
+                  }}
+                >
+                  <AppleIcon className="w-4 h-4 mb-0.5" />
+                  Download for Mac
+                </button>
+                
+                <button 
+                  className="bg-black hover:bg-neutral-900 text-white font-extrabold rounded-full px-8 py-4 flex items-center justify-center gap-2.5 transition-all text-sm border border-neutral-800 hover:scale-105 cursor-pointer pointer-events-auto"
+                  onClick={() => {
+                    alert("thinkwispr download initiated for Windows Core Operating Systems.");
+                  }}
+                >
+                  <WindowsIcon className="w-4 h-4 mb-0.5" />
+                  Download for Windows
+                </button>
+              </div>
+            </FadeIn>
 
-          <FadeIn delay={0.45}>
-            <span className="text-slate-400 text-xs mt-6 block cursor-pointer hover:text-white transition-colors pointer-events-auto">
-              Also available for iPhone &gt;
-            </span>
-          </FadeIn>
+            <FadeIn delay={0.45}>
+              <span className="text-slate-400 text-xs mt-6 block cursor-pointer hover:text-white transition-colors pointer-events-auto">
+                Also available for iPhone &gt;
+              </span>
+            </FadeIn>
 
-          <FadeIn delay={0.55}>
-            <p className="text-[15px] sm:text-[17px] md:text-[18px] text-slate-300 font-medium max-w-xl mx-auto mt-12 text-center leading-relaxed">
-              Turn your voice into polished text.<br />
-              Works in Slack, Gmail and any other site or app.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+            <FadeIn delay={0.55}>
+              <p className="text-[15px] sm:text-[17px] md:text-[18px] text-slate-300 font-medium max-w-xl mx-auto mt-12 text-center leading-relaxed">
+                Turn your voice into polished text.<br />
+                Works in Slack, Gmail and any other site or app.
+              </p>
+            </FadeIn>
+          </div>
+        </motion.div>
+      </div>
 
       {/* ADAPTABILITY SECTION: Core Dual-Pane live playground */}
       <section className="w-full bg-[#030303] py-24 md:py-32 px-6 border-b border-neutral-900">
@@ -428,7 +457,7 @@ export default function App() {
               Build it yourself.
             </h2>
             <p className="text-stone-400 text-sm md:text-base mb-8 leading-relaxed">
-              Custom Mode lets you define how thinkwsipr thinks, writes, and formats. Directly match specific client workflows, insert APIs, and automate triggers.
+              Custom Mode lets you define how thinkwispr thinks, writes, and formats. Directly match specific client workflows, insert APIs, and automate triggers.
             </p>
 
             <div className="space-y-6">
@@ -514,8 +543,8 @@ export default function App() {
           
           <div className="col-span-2 md:col-span-2">
             <div className="flex items-center gap-2.5 font-extrabold text-2xl tracking-tight mb-4 text-white">
-              <AudioLines className="w-6 h-6 text-white stroke-[2]" />
-              <span>thinkwsipr</span>
+              <img src="https://i.ibb.co/7JDFJJyd/Screenshot-20260609-134229-Chrome.jpg" className="w-8 h-8 rounded-md object-cover" referrerPolicy="no-referrer" alt="thinkwispr logo" />
+              <span>thinkwispr</span>
             </div>
             <p className="text-zinc-500 text-sm max-w-sm leading-relaxed mb-6">
               Crafted with absolute dedication. Safe, offline-compatible AI dictation designed to let you dictate anything, anywhere, 10x faster.

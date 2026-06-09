@@ -1,6 +1,6 @@
 {
-  "name": "Remix: impersio ai ",
-  "description": "Impersio is an AI-powered answer engine that delivers fast, accurate, and cited answers to your questions. Search smarter with real-time web access and transparent sources.",
+  "name": "thinkwispr",
+  "description": "thinkwispr is an AI-powered dictation platform that allows you to speak naturally and write faster.",
   "requestFramePermissions": [
     "microphone"
   ],

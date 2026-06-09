@@ -11,7 +11,7 @@ export default function TestimonialSection() {
       handle: "@karpathy",
       role: "Founder Eureka Labs, Former Tesla & OpenAI",
       avatar: "https://framerusercontent.com/images/BD0IjamMdd4pWLkZSrAyKkLeLQ.png", // Stand-in high-quality profile
-      tweet: `There's a new kind of coding I call "vibe coding", where you fully give in to the vibes, embrace exponentials, and forget that the code even exists. It's possible because LLMs (like Cursor Composer) are getting too good. I just talk to Composer with @superwhisperapp so I barely even touch the keyboard. It is a cheat code. Highly recommended.`,
+      tweet: `There's a new kind of coding I call "vibe coding", where you fully give in to the vibes, embrace exponentials, and forget that the code even exists. It's possible because LLMs (like Cursor Composer) are getting too good. I just talk to Composer with @thinkwispr so I barely even touch the keyboard. It is a cheat code. Highly recommended.`,
       date: "Mar 15, 2026"
     },
     {
@@ -20,7 +20,7 @@ export default function TestimonialSection() {
       handle: "@levelsio",
       role: "Serial Solo Founder: NomadList, PhotoAI, RemoteOK",
       avatar: "https://framerusercontent.com/images/BD0IjamMdd4pWLkZSrAyKkLeLQ.png",
-      tweet: `Superwhisper is by far the best local dictation app I have ever used on my Mac book. Literally saves me up to 2-3 hours every single day writing newsletters, emails and responding to tweets. The custom dictionary does not fail on technical phrases, and offline models are extremely fast.`,
+      tweet: `thinkwispr is by far the best local dictation app I have ever used on my Mac book. Literally saves me up to 2-3 hours every single day writing newsletters, emails and responding to tweets. The custom dictionary does not fail on technical phrases, and offline models are extremely fast.`,
       date: "Apr 2, 2026"
     },
     {
@@ -29,7 +29,7 @@ export default function TestimonialSection() {
       handle: "@awilkinson",
       role: "CEO & Co-founder, Tiny Capital",
       avatar: "https://framerusercontent.com/images/BD0IjamMdd4pWLkZSrAyKkLeLQ.png",
-      tweet: `My wrists and hands were starting to hurt severely from typing lengthy memos and Slack follow-ups all day. Tried many speech tools, but Superwhisper is total magic. It automatically cleans out all my pauses, formats structured bullet logs, and lets me write at 150 words per minute.`,
+      tweet: `My wrists and hands were starting to hurt severely from typing lengthy memos and Slack follow-ups all day. Tried many speech tools, but thinkwispr is total magic. It automatically cleans out all my pauses, formats structured bullet logs, and lets me write at 150 words per minute.`,
       date: "Jan 12, 2026"
     },
     {
@@ -38,7 +38,7 @@ export default function TestimonialSection() {
       handle: "@rauchg",
       role: "Founder & CEO, Vercel",
       avatar: "https://framerusercontent.com/images/BD0IjamMdd4pWLkZSrAyKkLeLQ.png",
-      tweet: `Speech dictation that runs locally with absolute zero lag is a massive superpower for productivity. The layout, native key registrations, and overall speed are unmatched. Superwhisper sets a pristine standard for developer micro-utilities in 2026.`,
+      tweet: `Speech dictation that runs locally with absolute zero lag is a massive superpower for productivity. The layout, native key registrations, and overall speed are unmatched. thinkwispr sets a pristine standard for developer micro-utilities in 2026.`,
       date: "Feb 28, 2026"
     }
   ];
