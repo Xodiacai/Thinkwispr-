@@ -71,17 +71,17 @@ export default function App() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end end"]
   });
 
   // Scroll animations for hero card
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.94]);
-  const heroWidth = useTransform(scrollYProgress, [0, 0.5], ["100%", "94%"]);
-  const heroBorderRadius = useTransform(scrollYProgress, [0, 0.5], ["0px", "36px"]);
-  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 24]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.85], [1, 0.94]);
+  const heroWidth = useTransform(scrollYProgress, [0, 0.85], ["100%", "94%"]);
+  const heroBorderRadius = useTransform(scrollYProgress, [0, 0.85], ["0px", "36px"]);
+  const heroY = useTransform(scrollYProgress, [0, 0.85], [0, 12]);
   const heroBorderColor = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.6],
     ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.15)"]
   );
 
@@ -318,76 +318,78 @@ export default function App() {
         </div>
       </motion.div>
 
-      {/* Hero Section with Scroll Animation */}
-      <div ref={heroRef} className="w-full bg-black relative flex flex-col items-center overflow-visible z-10 min-h-screen">
-        <motion.div
-          style={{
-            scale: heroScale,
-            width: heroWidth,
-            borderRadius: heroBorderRadius,
-            y: heroY,
-            borderColor: heroBorderColor,
-            borderWidth: "1px",
-          }}
-          className="relative w-full flex flex-col items-center justify-center pt-52 pb-44 px-4 overflow-hidden min-h-screen bg-black shadow-[0_30px_100px_rgba(0,0,0,0.95)]"
-        >
-          {/* FIRST PAGE IMMERSIVE FULL-BLEED BACKGROUND GRAPHIC (Line-face artwork & high-fidelity workspace layout) */}
-          <div 
-            className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-100 transition-opacity duration-700" 
-            style={{ 
-              backgroundImage: `url('https://i.ibb.co/bjxHfdsc/1780741141830.png')`,
-              backgroundRepeat: 'no-repeat'
+      {/* Hero Section with Sticky Scroll Animation */}
+      <div ref={heroRef} className="w-full bg-black relative z-10 h-[140vh] md:h-[160vh]">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+          <motion.div
+            style={{
+              scale: heroScale,
+              width: heroWidth,
+              borderRadius: heroBorderRadius,
+              y: heroY,
+              borderColor: heroBorderColor,
+              borderWidth: "1px",
             }}
-          />
+            className="relative w-full h-[98vh] md:h-[95vh] flex flex-col items-center justify-center px-4 overflow-hidden bg-black shadow-[0_30px_100px_rgba(0,0,0,0.95)]"
+          >
+            {/* FIRST PAGE IMMERSIVE FULL-BLEED BACKGROUND GRAPHIC (Line-face artwork & high-fidelity workspace layout) */}
+            <div 
+              className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-100 transition-opacity duration-700" 
+              style={{ 
+                backgroundImage: `url('https://i.ibb.co/bjxHfdsc/1780741141830.png')`,
+                backgroundRepeat: 'no-repeat'
+              }}
+            />
 
-          <div className="relative z-10 text-center flex flex-col items-center w-full max-w-4xl mx-auto">
-            {/* Slogan */}
-            <FadeIn delay={0.25}>
-              <h1 className="text-5xl sm:text-7xl md:text-[84px] tracking-tight text-white font-extrabold leading-[1.05] mb-8 font-sans">
-                Just speak.<br />
-                <span className="text-white">Write faster.</span>
-              </h1>
-            </FadeIn>
+            <div className="relative z-10 text-center flex flex-col items-center w-full max-w-4xl mx-auto">
+              {/* Slogan */}
+              <FadeIn delay={0.25}>
+                <h1 className="text-5xl sm:text-7xl md:text-[84px] tracking-tight text-white font-extrabold leading-[1.05] mb-8 font-sans">
+                  Just speak.<br />
+                  <span className="text-white">Write faster.</span>
+                </h1>
+              </FadeIn>
 
-            {/* Download buttons columns */}
-            <FadeIn delay={0.35}>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <button 
-                  className="bg-white hover:bg-neutral-100 text-black font-extrabold rounded-full px-8 py-4 flex items-center justify-center gap-2.5 transition-all text-sm shadow-xl hover:scale-105 cursor-pointer pointer-events-auto"
-                  onClick={() => {
-                    alert("thinkwispr client package downloaded for macOS. Press standard triple-spacebar globally to dictate.");
-                  }}
-                >
-                  <AppleIcon className="w-4 h-4 mb-0.5" />
-                  Download for Mac
-                </button>
-                
-                <button 
-                  className="bg-black hover:bg-neutral-900 text-white font-extrabold rounded-full px-8 py-4 flex items-center justify-center gap-2.5 transition-all text-sm border border-neutral-800 hover:scale-105 cursor-pointer pointer-events-auto"
-                  onClick={() => {
-                    alert("thinkwispr download initiated for Windows Core Operating Systems.");
-                  }}
-                >
-                  <WindowsIcon className="w-4 h-4 mb-0.5" />
-                  Download for Windows
-                </button>
-              </div>
-            </FadeIn>
+              {/* Download buttons columns */}
+              <FadeIn delay={0.35}>
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <button 
+                    className="bg-white hover:bg-neutral-100 text-black font-extrabold rounded-full px-8 py-4 flex items-center justify-center gap-2.5 transition-all text-sm shadow-xl hover:scale-105 cursor-pointer pointer-events-auto"
+                    onClick={() => {
+                      alert("thinkwispr client package downloaded for macOS. Press standard triple-spacebar globally to dictate.");
+                    }}
+                  >
+                    <AppleIcon className="w-4 h-4 mb-0.5" />
+                    Download for Mac
+                  </button>
+                  
+                  <button 
+                    className="bg-black hover:bg-neutral-900 text-white font-extrabold rounded-full px-8 py-4 flex items-center justify-center gap-2.5 transition-all text-sm border border-neutral-800 hover:scale-105 cursor-pointer pointer-events-auto"
+                    onClick={() => {
+                      alert("thinkwispr download initiated for Windows Core Operating Systems.");
+                    }}
+                  >
+                    <WindowsIcon className="w-4 h-4 mb-0.5" />
+                    Download for Windows
+                  </button>
+                </div>
+              </FadeIn>
 
-            <FadeIn delay={0.45}>
-              <span className="text-slate-400 text-xs mt-6 block cursor-pointer hover:text-white transition-colors pointer-events-auto">
-                Also available for iPhone &gt;
-              </span>
-            </FadeIn>
+              <FadeIn delay={0.45}>
+                <span className="text-slate-400 text-xs mt-6 block cursor-pointer hover:text-white transition-colors pointer-events-auto">
+                  Also available for iPhone &gt;
+                </span>
+              </FadeIn>
 
-            <FadeIn delay={0.55}>
-              <p className="text-[15px] sm:text-[17px] md:text-[18px] text-slate-300 font-medium max-w-xl mx-auto mt-12 text-center leading-relaxed">
-                Turn your voice into polished text.<br />
-                Works in Slack, Gmail and any other site or app.
-              </p>
-            </FadeIn>
-          </div>
-        </motion.div>
+              <FadeIn delay={0.55}>
+                <p className="text-[15px] sm:text-[17px] md:text-[18px] text-slate-300 font-medium max-w-xl mx-auto mt-12 text-center leading-relaxed">
+                  Turn your voice into polished text.<br />
+                  Works in Slack, Gmail and any other site or app.
+                </p>
+              </FadeIn>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* ADAPTABILITY SECTION: Core Dual-Pane live playground */}
