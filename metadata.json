@@ -1,0 +1,10 @@
+{
+  "name": "Remix: impersio ai ",
+  "description": "Impersio is an AI-powered answer engine that delivers fast, accurate, and cited answers to your questions. Search smarter with real-time web access and transparent sources.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
